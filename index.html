@@ -82,7 +82,35 @@
     padding:120px 0 80px;
   }
   .hero-flow-bg{ position:absolute; inset:0; z-index:0; opacity:0.9; }
-  .hero-inner{ position:relative; z-index:2; max-width:760px; }
+  .hero-grid{ position:relative; z-index:2; display:grid; grid-template-columns:1fr 340px; gap:60px; align-items:center; }
+  .hero-inner{ max-width:760px; }
+  .hero-photo{ position:relative; }
+  .hero-photo-frame{
+    position:relative; border-radius:22px; overflow:hidden; aspect-ratio:4/5;
+    border:1px solid var(--border);
+    box-shadow:0 30px 60px rgba(0,0,0,0.45);
+  }
+  .hero-photo-frame img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .hero-photo-frame::after{
+    content:""; position:absolute; inset:0; border-radius:22px;
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,0.06);
+    background:linear-gradient(180deg, transparent 60%, rgba(10,14,31,0.55) 100%);
+  }
+  .hero-photo-glow{
+    position:absolute; inset:-18px; z-index:-1; border-radius:30px; opacity:0.55; filter:blur(28px);
+    background:var(--grad);
+  }
+  .hero-photo-tag{
+    position:absolute; left:-14px; bottom:26px; z-index:3;
+    background:var(--bg-elev); border:1px solid var(--border); border-radius:12px;
+    padding:10px 14px; font-family:'JetBrains Mono'; font-size:11.5px; color:var(--text-muted);
+    box-shadow:0 12px 26px rgba(0,0,0,0.4);
+  }
+  .hero-photo-tag strong{ display:block; color:var(--cyan); font-size:13px; font-family:'Space Grotesk'; }
+  @media (max-width:900px){
+    .hero-grid{ grid-template-columns:1fr; }
+    .hero-photo{ max-width:280px; margin:0 auto; order:-1; }
+  }
   .hero .eyebrow{ margin-bottom:22px; }
   .hero h1{
     font-size:clamp(40px, 7vw, 76px);
@@ -229,12 +257,23 @@
   }
   .cert-badge h3{ font-size:15.5px; font-weight:600; margin-bottom:6px; font-family:'Space Grotesk'; }
   .cert-badge p{ font-size:13px; color:var(--text-muted); }
-  .cert-more{
-    display:flex; align-items:center; justify-content:center; text-align:center;
-    border:1px dashed var(--border); border-radius:16px; padding:26px 24px;
-    font-family:'JetBrains Mono'; font-size:14px; color:var(--text-muted);
+  .cert-tag{ font-family:'JetBrains Mono'; font-size:10.5px; text-transform:uppercase; letter-spacing:0.06em; color:var(--violet); margin-bottom:2px; display:block; }
+  .cert-date{ font-family:'JetBrains Mono'; font-size:11px; color:var(--text-muted); margin-top:10px; display:block; }
+  .cert-badge.cert-hidden{ display:none; }
+  .cert-toggle{
+    grid-column:1/-1; display:flex; align-items:center; justify-content:center; text-align:center;
+    border:1px dashed var(--border); border-radius:16px; padding:20px 24px; margin-top:4px;
+    font-family:'JetBrains Mono'; font-size:13.5px; color:var(--cyan); cursor:pointer; background:none;
+    transition:border-color .2s, color .2s;
   }
-  .cert-more strong{ color:var(--gold); display:block; font-size:22px; margin-bottom:6px; font-family:'Space Grotesk'; }
+  .cert-toggle:hover{ border-color:var(--cyan); color:var(--text); }
+
+  .trail-strip{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:16px; margin-bottom:40px; }
+  .trail-stat{ border:1px solid var(--border); border-radius:14px; padding:18px 20px; background:var(--bg-elev); text-align:center; }
+  .trail-stat .stat-num{ font-size:24px; }
+  .trail-stat .stat-label{ margin-top:4px; }
+
+  .tag-strip{ display:flex; flex-wrap:wrap; gap:10px; margin-top:30px; }
 
   .honor-strip{
     margin-top:26px; display:flex; align-items:center; gap:16px;
@@ -327,19 +366,28 @@
     <circle cx="200" cy="500" r="3.5" fill="#9B6BFF"/>
   </svg>
 
-  <div class="wrap hero-inner">
-    <div class="eyebrow">Pune, Maharashtra, India</div>
-    <h1>I design the <span class="accent">flows</span> that run the business.</h1>
-    <p class="lead">Prashant Kumbhar — Senior Salesforce Solution Architect at SMS Magic. I turn tangled processes into clean, automated Salesforce architecture: Flows, Apex, and integrations that decision-makers can actually trust.</p>
-    <div class="hero-badges">
-      <span class="pill"><span class="dot"></span>14x Salesforce Certified</span>
-      <span class="pill"><span class="dot"></span>Four Star Ranger</span>
-      <span class="pill"><span class="dot"></span>50 Superbadges</span>
-      <span class="pill"><span class="dot"></span>Flow &amp; Apex specialist</span>
+  <div class="wrap hero-grid">
+    <div class="hero-inner">
+      <div class="eyebrow">Pune, Maharashtra, India</div>
+      <h1>I design the <span class="accent">flows</span> that run the business.</h1>
+      <p class="lead">Prashant Kumbhar — Senior Salesforce Solution Architect at SMS Magic. I turn tangled processes into clean, automated Salesforce architecture: Flows, Apex, and integrations that decision-makers can actually trust.</p>
+      <div class="hero-badges">
+        <span class="pill"><span class="dot"></span>14x Salesforce Certified</span>
+        <span class="pill"><span class="dot"></span>Four Star Ranger</span>
+        <span class="pill"><span class="dot"></span>50 Superbadges</span>
+        <span class="pill"><span class="dot"></span>Flow &amp; Apex specialist</span>
+      </div>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="mailto:kumbhar.prashant2@gmail.com">Email me</a>
+        <a class="btn btn-outline" href="https://www.linkedin.com/in/prashantkumbharsf" target="_blank" rel="noopener">View LinkedIn ↗</a>
+      </div>
     </div>
-    <div class="hero-actions">
-      <a class="btn btn-primary" href="mailto:kumbhar.prashant2@gmail.com">Email me</a>
-      <a class="btn btn-outline" href="https://www.linkedin.com/in/prashantkumbharsf" target="_blank" rel="noopener">View LinkedIn ↗</a>
+    <div class="hero-photo">
+      <div class="hero-photo-glow"></div>
+      <div class="hero-photo-frame">
+        <img src="prashant-photo.png" alt="Prashant Kumbhar">
+      </div>
+      <div class="hero-photo-tag"><strong>Four Star Ranger</strong>Trailhead, Salesforce</div>
     </div>
   </div>
   <div class="scroll-cue"><div class="line"></div>Scroll</div>
@@ -352,15 +400,15 @@
       <h2>Architecture with an admin's instincts.</h2>
       <div class="about-copy" style="margin-top:24px;">
         <p>I've spent a decade inside the Salesforce ecosystem — starting as a Customer Success Engineer supporting clients across the US, and growing into the person clients now bring in to <strong>architect the org from the ground up.</strong> That path matters: I still think like the admin who has to maintain what gets built.</p>
-        <p>At <strong>SMS Magic</strong>, I lead projects that automate business processes end-to-end — collaborating with decision-makers to understand what they actually need, then designing it in Flow and Apex rather than duct-taping another workaround onto the org.</p>
+        <p>At <strong>SMS Magic</strong> (Screen Magic Mobile Media Pvt. Ltd.), I lead projects that automate business processes end-to-end — collaborating with decision-makers to understand what they actually need, then designing it in Flow and Apex rather than duct-taping another workaround onto the org.</p>
         <p>Alongside the day job, I hold an <strong>MSc in Corporate Management</strong> from the University of Europe for Applied Sciences (Berlin) and a <strong>BE in Computer Engineering</strong> from Savitribai Phule Pune University — a combination that keeps my solutions grounded in both the technical build and the business case behind it.</p>
       </div>
     </div>
     <div class="stat-col">
-      <div class="stat-node"><div class="stat-num">14x</div><div class="stat-label">Salesforce certifications</div></div>
-      <div class="stat-node"><div class="stat-num">50</div><div class="stat-label">Trailhead superbadges</div></div>
-      <div class="stat-node"><div class="stat-num">10+ yrs</div><div class="stat-label">In the Salesforce ecosystem</div></div>
-      <div class="stat-node"><div class="stat-num">3</div><div class="stat-label">Continents worked across — India, Germany, US clients</div></div>
+      <div class="stat-node"><div class="stat-num">14</div><div class="stat-label">Salesforce certifications</div></div>
+      <div class="stat-node"><div class="stat-num">419</div><div class="stat-label">Trailhead badges earned</div></div>
+      <div class="stat-node"><div class="stat-num">334,450</div><div class="stat-label">Trailhead points</div></div>
+      <div class="stat-node"><div class="stat-num">Four Star</div><div class="stat-label">Ranger rank on Trailhead</div></div>
     </div>
   </div>
 </section>
@@ -528,35 +576,132 @@
   <div class="wrap">
     <div class="section-head">
       <div class="eyebrow">Proof of Work</div>
-      <h2>Certifications &amp; recognition.</h2>
+      <h2>Certifications &amp; Trailhead record.</h2>
+      <p>Live numbers from my Trailblazer profile.</p>
     </div>
-    <div class="cert-grid">
+
+    <div class="trail-strip">
+      <div class="trail-stat"><div class="stat-num">419</div><div class="stat-label">Badges</div></div>
+      <div class="trail-stat"><div class="stat-num">334,450</div><div class="stat-label">Points</div></div>
+      <div class="trail-stat"><div class="stat-num">41</div><div class="stat-label">Trails</div></div>
+      <div class="trail-stat"><div class="stat-num">50</div><div class="stat-label">Superbadges</div></div>
+      <div class="trail-stat"><div class="stat-num">Champion '25</div><div class="stat-label">Agentblazer Status</div></div>
+    </div>
+
+    <div class="cert-grid" id="cert-grid">
       <div class="cert-badge">
-        <div class="cert-hex">SV</div>
+        <span class="cert-tag">Architect</span>
+        <div class="cert-hex">PDA</div>
+        <h3>Platform Data Architect</h3>
+        <p>Enterprise-scale data architecture &amp; performance</p>
+        <span class="cert-date">Issued Jan 2026</span>
+      </div>
+      <div class="cert-badge">
+        <span class="cert-tag">Architect</span>
+        <div class="cert-hex">APA</div>
+        <h3>Application Architect</h3>
+        <p>Sharing, security &amp; data modeling mastery</p>
+        <span class="cert-date">Issued Jan 2026</span>
+      </div>
+      <div class="cert-badge">
+        <span class="cert-tag">Agentforce</span>
+        <div class="cert-hex">AGS</div>
+        <h3>Agentforce Specialist</h3>
+        <p>Configuring &amp; optimizing Agentforce</p>
+        <span class="cert-date">Issued Apr 2025</span>
+      </div>
+      <div class="cert-badge">
+        <span class="cert-tag">Experience</span>
+        <div class="cert-hex">ECC</div>
+        <h3>Experience Cloud Consultant</h3>
+        <p>Customer-facing site implementation</p>
+        <span class="cert-date">Issued Apr 2024</span>
+      </div>
+      <div class="cert-badge">
+        <span class="cert-tag">Architect</span>
+        <div class="cert-hex">SVA</div>
         <h3>Sharing and Visibility Architect</h3>
-        <p>Salesforce Certified</p>
+        <p>Secure, scalable sharing design</p>
+        <span class="cert-date">Issued Mar 2024</span>
       </div>
       <div class="cert-badge">
-        <div class="cert-hex">AA</div>
-        <h3>Advanced Administrator (SCAA)</h3>
-        <p>Salesforce Certified</p>
+        <span class="cert-tag">Agentforce</span>
+        <div class="cert-hex">AIA</div>
+        <h3>AI Associate</h3>
+        <p>Trusted AI strategy &amp; principles</p>
+        <span class="cert-date">Issued Oct 2023</span>
       </div>
       <div class="cert-badge">
-        <div class="cert-hex">EN</div>
-        <h3>Proficiency in English</h3>
-        <p>AMCAT Certified</p>
+        <span class="cert-tag">Platform</span>
+        <div class="cert-hex">BA</div>
+        <h3>Business Analyst</h3>
+        <p>Requirements gathering to solution design</p>
+        <span class="cert-date">Issued Apr 2023</span>
       </div>
       <div class="cert-badge">
-        <div class="cert-hex">SH</div>
-        <h3>Service Hub Software</h3>
-        <p>Product Certification</p>
+        <span class="cert-tag">Platform</span>
+        <div class="cert-hex">PF</div>
+        <h3>Platform Foundations</h3>
+        <p>Core CRM platform fundamentals</p>
+        <span class="cert-date">Issued Sep 2022</span>
       </div>
-      <div class="cert-more"><div><strong>+10</strong>more certifications<br>across the Salesforce ecosystem</div></div>
+
+      <div class="cert-badge cert-hidden">
+        <span class="cert-tag">Service</span>
+        <div class="cert-hex">ASC</div>
+        <h3>Agentforce Service Consultant</h3>
+        <p>Scalable service solution design</p>
+        <span class="cert-date">Issued Aug 2020</span>
+      </div>
+      <div class="cert-badge cert-hidden">
+        <span class="cert-tag">Sales</span>
+        <div class="cert-hex">AGC</div>
+        <h3>Agentforce Sales Consultant</h3>
+        <p>Sales solution design &amp; delivery</p>
+        <span class="cert-date">Issued Jul 2020</span>
+      </div>
+      <div class="cert-badge cert-hidden">
+        <span class="cert-tag">Platform</span>
+        <div class="cert-hex">PAB</div>
+        <h3>Platform App Builder</h3>
+        <p>Declarative app development</p>
+        <span class="cert-date">Issued May 2020</span>
+      </div>
+      <div class="cert-badge cert-hidden">
+        <span class="cert-tag">Platform</span>
+        <div class="cert-hex">PD</div>
+        <h3>Platform Developer</h3>
+        <p>Apex &amp; Visualforce development</p>
+        <span class="cert-date">Issued Jan 2019</span>
+      </div>
+      <div class="cert-badge cert-hidden">
+        <span class="cert-tag">Platform</span>
+        <div class="cert-hex">PA2</div>
+        <h3>Platform Administrator II</h3>
+        <p>Advanced org administration</p>
+        <span class="cert-date">Issued Apr 2018</span>
+      </div>
+      <div class="cert-badge cert-hidden">
+        <span class="cert-tag">Platform</span>
+        <div class="cert-hex">PA</div>
+        <h3>Platform Administrator</h3>
+        <p>Where the certification journey started</p>
+        <span class="cert-date">Issued Mar 2018</span>
+      </div>
+
+      <button class="cert-toggle" id="cert-toggle" type="button">Show all 14 certifications ↓</button>
     </div>
 
     <div class="honor-strip">
       <span class="tag">Honor</span>
       <div><strong>Breathe Customer Award</strong> — recognized for impact delivered directly for the customer.</div>
+    </div>
+
+    <div class="tag-strip">
+      <span class="pill"><span class="dot"></span>#AwesomeAdmin</span>
+      <span class="pill"><span class="dot"></span>#ConfidentConsultant</span>
+      <span class="pill"><span class="dot"></span>#DaringDevelopers</span>
+      <span class="pill"><span class="dot"></span>Dreamforce '24 · San Francisco</span>
     </div>
   </div>
 </section>
@@ -632,6 +777,18 @@
       links.style.borderRadius = '12px';
       links.style.padding = '18px 24px';
       links.style.gap = '16px';
+    });
+  }
+
+  // certification list expand/collapse
+  const certToggle = document.getElementById('cert-toggle');
+  let certsExpanded = false;
+  const hiddenCerts = document.querySelectorAll('.cert-hidden');
+  if(certToggle){
+    certToggle.addEventListener('click', () => {
+      certsExpanded = !certsExpanded;
+      hiddenCerts.forEach(el => el.classList.toggle('cert-hidden', !certsExpanded));
+      certToggle.textContent = certsExpanded ? 'Show fewer ↑' : 'Show all 14 certifications ↓';
     });
   }
 
