@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prashant Kumbhar | Sr. Salesforce Solution Architect</title>
+  <meta name="description" content="Portfolio of Prashant Kumbhar - Sr. Salesforce Solution Architect, 14X Certified, Application Architect, and Flow Expert." />
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-primary: #0a0e17;
+      --bg-secondary: #111827;
+      --bg-card: rgba(17, 24, 39, 0.7);
+      --border: rgba(255, 255, 255, 0.08);
+      --border-hover: rgba(56, 189, 248, 0.4);
+      --accent: #00a1e0; /* Salesforce Sky */
+      --accent-glow: rgba(0, 161, 224, 0.25);
+      --accent-gradient: linear-gradient(135deg, #00a1e0 0%, #6366f1 100%);
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --text-sub: #6b7280;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    /* Ambient Background Glow */
+    .glow-bg {
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--accent-glow) 0%, rgba(0,0,0,0) 70%);
+      top: -150px;
+      right: -100px;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      background: rgba(10, 14, 23, 0.75);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      padding: 1.2rem 0;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .nav-logo {
+      font-weight: 800;
+      font-size: 1.2rem;
+      letter-spacing: -0.5px;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 6rem 0 4rem;
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      background: rgba(0, 161, 224, 0.1);
+      border: 1px solid rgba(0, 161, 224, 0.3);
+      color: #38bdf8;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -1.5px;
+      margin-bottom: 1rem;
+    }
+
+    .hero-title {
+      font-size: 1.4rem;
+      color: var(--text-muted);
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-bio {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 780px;
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+
+    .action-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.4rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--accent-gradient);
+      color: #fff;
+      box-shadow: 0 4px 20px var(--accent-glow);
+      border: none;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(0, 161, 224, 0.4);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-main);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--border-hover);
+    }
+
+    /* Key Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.25rem;
+      margin: 3.5rem 0 5rem;
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .stat-card .num {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #38bdf8;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .stat-card .label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+
+    /* Section Global Headers */
+    .section-header {
+      margin-bottom: 2.5rem;
+    }
+
+    .section-tag {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.4rem;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.8px;
+    }
+
+    /* Experience Timeline */
+    .timeline {
+      position: relative;
+      border-left: 2px solid var(--border);
+      margin-left: 0.5rem;
+      padding-left: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+      margin-bottom: 5rem;
+    }
+
+    .timeline-item {
+      position: relative;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -2.45rem;
+      top: 0.35rem;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--bg-primary);
+      border: 2px solid var(--accent);
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-bottom: 0.3rem;
+    }
+
+    .exp-role {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .exp-company {
+      font-size: 1rem;
+      color: #38bdf8;
+      font-weight: 500;
+    }
+
+    .exp-date {
+      font-size: 0.85rem;
+      color: var(--text-sub);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .exp-details {
+      margin-top: 0.75rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .exp-details ul {
+      list-style-position: inside;
+      margin-top: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    /* Skills & Credentials Grid */
+    .skills-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 5rem;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #fff;
+    }
+
+    .pill-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .pill {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      padding: 0.35rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 3rem 0;
+      margin-top: 4rem;
+      text-align: center;
+      color: var(--text-sub);
+      font-size: 0.9rem;
+    }
+
+    .footer-socials {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .footer-socials a {
+      color: var(--text-muted);
+      font-size: 1.2rem;
+      transition: color 0.2s;
+    }
+
+    .footer-socials a:hover {
+      color: #38bdf8;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.2rem; }
+      .nav-links { display: none; }
+      .timeline { padding-left: 1.5rem; }
+      .timeline-dot { left: -1.95rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glow-bg"></div>
+
+  <nav>
+    <div class="nav-container">
+      <a href="#" class="nav-logo">PK.</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Architecture</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- Hero Section -->
+    <section class="hero" id="about">
+      <div class="badge-pill">
+        <i class="fa-solid fa-cloud"></i> 14X Certified Salesforce Specialist
+      </div>
+      <h1>Prashant Kumbhar</h1>
+      <div class="hero-title">Sr. Salesforce Solution Architect &amp; Application Architect</div>
+      <p class="hero-bio">
+        Engineering resilient enterprise CRM solutions across Europe and India. Specializing in high-performance Salesforce automation, complex Flow architectures, Apex backend design, third-party integrations, and digital process transformations.
+      </p>
+      
+      <div class="action-row">
+        <a href="mailto:kumbhar.prashant2@gmail.com" class="btn btn-primary">
+          <i class="fa-solid fa-envelope"></i> Get in Touch
+        </a>
+        <a href="https://www.linkedin.com/in/prashantkumbharsf" target="_blank" class="btn btn-secondary">
+          <i class="fa-brands fa-linkedin"></i> LinkedIn
+        </a>
+      </div>
+    </section>
+
+    <!-- Stat Highlights -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="num">14x</div>
+        <div class="label">Salesforce Certified</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">4★</div>
+        <div class="label">Trailhead Ranger</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">50+</div>
+        <div class="label">Trailhead Superbadges</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">8+</div>
+        <div class="label">Years of Ecosystem Experience</div>
+      </div>
+    </div>
+
+    <!-- Experience Timeline -->
+    <section id="experience">
+      <div class="section-header">
+        <div class="section-tag">Career Path</div>
+        <h2 class="section-title">Professional Experience</h2>
+      </div>
+
+      <div class="timeline">
+        <!-- Conversive -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="exp-header">
+            <div>
+              <div class="exp-role">Sr. Salesforce Solution Architect</div>
+              <div class="exp-company">Conversive</div>
+            </div>
+            <div class="exp-date">July 2024 &ndash; Present</div>
+          </div>
+          <div class="exp-details">
+            Leading end-to-end architecture and strategic automation solutions across multi-cloud enterprise setups.
+          </div>
+        </div>
+
+        <!-- X-ionic -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="exp-header">
+            <div>
+              <div class="exp-role">Founder / SF Architect</div>
+              <div class="exp-company">X-ionic Tech Solutions</div>
+            </div>
+            <div class="exp-date">Dec 2023 &ndash; July 2024</div>
+          </div>
+          <div class="exp-details">
+            Advised clients on enterprise org architecture, migration strategies, Sales Cloud optimizations, and multi-system API integrations.
+          </div>
+        </div>
+
+        <!-- Tourlane -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="exp-header">
+            <div>
+              <div class="exp-role">Salesforce Administrator / Developer</div>
+              <div class="exp-company">Tourlane (Berlin, Germany)</div>
+            </div>
+            <div class="exp-date">Nov 2021 &ndash; Nov 2023</div>
+          </div>
+          <div class="exp-details">
+            <ul>
+              <li>Architected migrations from legacy Process Builders into optimized Flow architectures.</li>
+              <li>Engineered custom Apex business logic across Sales, Service, and Experience Clouds.</li>
+              <li>Implemented Omnichannel routing, org health audits, and deduplication engines.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Somnetics -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="exp-header">
+            <div>
+              <div class="exp-role">Salesforce Administrator &amp; Developer</div>
+              <div class="exp-company">Somnetics International, Inc.</div>
+            </div>
+            <div class="exp-date">June 2019 &ndash; Apr 2020</div>
+          </div>
+          <div class="exp-details">
+            Streamlined inbound sales lead cadence, integrated 3rd-party AppExchange APIs, and improved UI efficiency for global sales teams.
+          </div>
+        </div>
+
+        <!-- Earlier Conversive Role -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="exp-header">
+            <div>
+              <div class="exp-role">Tech Lead (Salesforce Support) &amp; Solutions</div>
+              <div class="exp-company">Conversive (EMEIA &amp; US)</div>
+            </div>
+            <div class="exp-date">June 2016 &ndash; May 2019</div>
+          </div>
+          <div class="exp-details">
+            Delivered technical architecture configurations, custom Apex, sharing and visibility rules, and cross-department technical leadership.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills & Education -->
+    <div class="skills-section" id="skills">
+      <div class="card">
+        <h3><i class="fa-solid fa-diagram-project" style="color:#00a1e0"></i> Technical Expertise</h3>
+        <div class="pill-cloud">
+          <span class="pill">Salesforce Flows</span>
+          <span class="pill">Apex &amp; Async Apex</span>
+          <span class="pill">Lightning Web Components</span>
+          <span class="pill">Sales Cloud</span>
+          <span class="pill">Service Cloud</span>
+          <span class="pill">Experience Cloud</span>
+          <span class="pill">REST/SOAP Integrations</span>
+          <span class="pill">Sharing &amp; Visibility</span>
+          <span class="pill">Omnichannel</span>
+          <span class="pill">Agile Delivery</span>
+        </div>
+      </div>
+
+      <div class="card" id="education">
+        <h3><i class="fa-solid fa-graduation-cap" style="color:#6366f1"></i> Education</h3>
+        <div style="margin-bottom: 1rem;">
+          <strong style="color: #fff;">M.Sc. in Corporate Management</strong>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">University of Europe for Applied Sciences (Berlin, Germany)</p>
+          <span style="font-size: 0.8rem; color: var(--text-sub); font-family: 'JetBrains Mono', monospace;">2020 &ndash; 2022</span>
+        </div>
+        <div>
+          <strong style="color: #fff;">B.E. in Computer Engineering</strong>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Savitribai Phule Pune University (India)</p>
+          <span style="font-size: 0.8rem; color: var(--text-sub); font-family: 'JetBrains Mono', monospace;">2012 &ndash; 2016</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer id="contact">
+    <div class="footer-socials">
+      <a href="https://www.linkedin.com/in/prashantkumbharsf" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+      <a href="mailto:kumbhar.prashant2@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+    </div>
+    <p>&copy; Prashant Kumbhar. Hosted via GitHub Pages at prashantkumbhar.com.</p>
+  </footer>
+
+</body>
+</html>
