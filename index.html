@@ -220,6 +220,9 @@
   .section-head{ margin-bottom:56px; max-width:640px; }
   .section-head h2{ font-size:clamp(30px,4vw,44px); margin-top:14px; letter-spacing:-0.01em; }
   .section-head p{ color:var(--text-muted); margin-top:14px; font-size:16px; }
+  .work-head{ display:flex; justify-content:space-between; align-items:center; gap:40px; max-width:100%; }
+  .work-illustration{ width:150px; height:150px; flex-shrink:0; }
+  @media (max-width:820px){ .work-head{ flex-direction:column; align-items:flex-start; } .work-illustration{ width:110px; height:110px; } }
 
   /* ---------- ABOUT / STATS ---------- */
   .about-grid{ display:grid; grid-template-columns:1.15fr 0.85fr; gap:60px; align-items:start; }
@@ -234,6 +237,7 @@
     content:""; position:absolute; top:-30%; right:-20%; width:120px; height:120px; border-radius:50%;
     background:radial-gradient(circle, rgba(0,212,255,0.18), transparent 70%);
   }
+  .stat-icon{ width:26px; height:26px; margin-bottom:12px; opacity:0.9; }
   .stat-num{ font-family:'Space Grotesk'; font-size:34px; font-weight:700; color:var(--cyan); }
   .stat-label{ font-family:'JetBrains Mono'; font-size:12.5px; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.06em; margin-top:4px; }
 
@@ -340,10 +344,11 @@
   }
   .cert-toggle:hover{ border-color:var(--cyan); color:var(--text); }
 
-  .trail-strip{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:16px; margin-bottom:40px; }
+  .trail-strip{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:16px; margin-bottom:24px; }
   .trail-stat{ border:1px solid var(--border); border-radius:14px; padding:18px 20px; background:var(--bg-elev); text-align:center; }
   .trail-stat .stat-num{ font-size:24px; }
   .trail-stat .stat-label{ margin-top:4px; }
+  .trail-link{ margin-bottom:44px; display:inline-flex; }
 
   .tag-strip{ display:flex; flex-wrap:wrap; gap:10px; margin-top:30px; }
 
@@ -376,13 +381,15 @@
   .split{ display:grid; grid-template-columns:1fr 1fr; gap:60px; }
   .edu-item{ border-left:2px solid var(--border); padding:4px 0 26px 22px; position:relative; }
   .edu-item::before{ content:""; position:absolute; left:-6px; top:6px; width:10px; height:10px; border-radius:50%; background:var(--violet); }
+  .edu-icon{ width:26px; height:26px; margin-bottom:8px; }
   .edu-item h3{ font-size:16.5px; font-weight:600; font-family:'Space Grotesk'; }
   .edu-item .edu-sub{ color:var(--cyan); font-size:13.5px; margin-top:3px; }
   .edu-item .edu-time{ color:var(--text-muted); font-size:12.5px; font-family:'JetBrains Mono'; margin-top:3px; }
 
   .lang-list{ display:flex; flex-direction:column; gap:14px; }
   .lang-row{ display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border); padding-bottom:12px; }
-  .lang-name{ font-weight:600; font-family:'Space Grotesk'; font-size:15px; }
+  .lang-name{ font-weight:600; font-family:'Space Grotesk'; font-size:15px; display:flex; align-items:center; gap:10px; }
+  .lang-dot{ width:10px; height:10px; border-radius:50%; display:inline-block; flex-shrink:0; }
   .lang-level{ font-family:'JetBrains Mono'; font-size:11.5px; color:var(--text-muted); border:1px solid var(--border); padding:4px 10px; border-radius:100px; }
 
   /* ---------- CONTACT ---------- */
@@ -521,10 +528,22 @@
       </div>
     </div>
     <div class="stat-col">
-      <div class="stat-node"><div class="stat-num" data-count="14">14</div><div class="stat-label">Salesforce certifications</div></div>
-      <div class="stat-node"><div class="stat-num" data-count="419">419</div><div class="stat-label">Trailhead badges earned</div></div>
-      <div class="stat-node"><div class="stat-num" data-count="334450" data-format="comma">334,450</div><div class="stat-label">Trailhead points</div></div>
-      <div class="stat-node"><div class="stat-num">Four Star</div><div class="stat-label">Ranger rank on Trailhead</div></div>
+      <div class="stat-node">
+        <svg class="stat-icon" viewBox="0 0 34 34" fill="none"><path d="M17 4 30 12 30 22 17 30 4 22 4 12Z" stroke="#00D4FF" stroke-width="1.6"/></svg>
+        <div class="stat-num" data-count="14">14</div><div class="stat-label">Salesforce certifications</div>
+      </div>
+      <div class="stat-node">
+        <svg class="stat-icon" viewBox="0 0 34 34" fill="none"><polygon points="17,3 21,13 32,13 23,20 26,31 17,24 8,31 11,20 2,13 13,13" stroke="#FFB74D" stroke-width="1.4" fill="none" stroke-linejoin="round"/></svg>
+        <div class="stat-num">Four Star</div><div class="stat-label">Ranger rank on Trailhead</div>
+      </div>
+      <div class="stat-node">
+        <svg class="stat-icon" viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="13" stroke="#9B6BFF" stroke-width="1.6"/><path d="M17 9v8l6 4" stroke="#9B6BFF" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <div class="stat-num" data-count="10">10+</div><div class="stat-label">Years in the Salesforce ecosystem</div>
+      </div>
+      <div class="stat-node">
+        <svg class="stat-icon" viewBox="0 0 34 34" fill="none"><ellipse cx="17" cy="17" rx="14" ry="8" stroke="#00D4FF" stroke-width="1.6"/><ellipse cx="17" cy="17" rx="8" ry="14" stroke="#9B6BFF" stroke-width="1.6"/></svg>
+        <div class="stat-num" data-count="2">2</div><div class="stat-label">Countries worked across — India &amp; Germany</div>
+      </div>
     </div>
   </div>
 </section>
@@ -574,7 +593,7 @@
         <div class="node-card">
           <div class="node-period">Nov 2021 — Nov 2023</div>
           <div class="node-role">Salesforce Administrator / Developer</div>
-          <div class="node-org">Travel-Tech Startup</div>
+          <div class="node-org">Tourlane</div>
           <div class="node-loc">Berlin, Germany</div>
           <div class="node-desc">Fast-paced startup, agile delivery. Migrated the org off Process Builder onto Flow, ran health checks and de-duplication, and built Apex logic across Sales, Service, and Experience Cloud.</div>
         </div>
@@ -690,10 +709,19 @@
 
 <section id="work">
   <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">Selected Work</div>
-      <h2>A few systems I've architected.</h2>
-      <p>Real problems from inside live, high-volume Salesforce orgs — the kind that don't show up on a certification exam.</p>
+    <div class="section-head work-head">
+      <div>
+        <div class="eyebrow">Selected Work</div>
+        <h2>A few systems I've architected.</h2>
+        <p>Real problems from inside live, high-volume Salesforce orgs — the kind that don't show up on a certification exam.</p>
+      </div>
+      <svg class="work-illustration" viewBox="0 0 160 160" fill="none" aria-hidden="true">
+        <circle cx="80" cy="80" r="70" stroke="var(--border)" stroke-width="1.5"/>
+        <rect x="40" y="40" width="34" height="34" rx="8" stroke="#00D4FF" stroke-width="1.6"/>
+        <circle cx="112" cy="52" r="17" stroke="#9B6BFF" stroke-width="1.6"/>
+        <polygon points="90,110 110,96 130,110 110,124" stroke="#FFB74D" stroke-width="1.6"/>
+        <path d="M74 57 H95 M112 69 V80 M90 110 L74 74" stroke="var(--text-muted)" stroke-width="1" stroke-dasharray="3 4"/>
+      </svg>
     </div>
     <div class="project-grid">
 
@@ -906,12 +934,29 @@
     </div>
 
     <div class="trail-strip">
-      <div class="trail-stat"><div class="stat-num" data-count="419">419</div><div class="stat-label">Badges</div></div>
-      <div class="trail-stat"><div class="stat-num" data-count="334450" data-format="comma">334,450</div><div class="stat-label">Points</div></div>
-      <div class="trail-stat"><div class="stat-num" data-count="41">41</div><div class="stat-label">Trails</div></div>
-      <div class="trail-stat"><div class="stat-num" data-count="50">50</div><div class="stat-label">Superbadges</div></div>
-      <div class="trail-stat"><div class="stat-num">Champion '25</div><div class="stat-label">Agentblazer Status</div></div>
+      <div class="trail-stat">
+        <svg class="stat-icon" viewBox="0 0 34 34" fill="none" style="margin:0 auto 10px;"><polygon points="17,4 25,9 25,19 17,24 9,19 9,9" stroke="#00D4FF" stroke-width="1.5"/></svg>
+        <div class="stat-num" data-count="419">419</div><div class="stat-label">Badges</div>
+      </div>
+      <div class="trail-stat">
+        <svg class="stat-icon" viewBox="0 0 34 34" fill="none" style="margin:0 auto 10px;"><polygon points="17,3 21,13 32,13 23,20 26,31 17,24 8,31 11,20 2,13 13,13" stroke="#FFB74D" stroke-width="1.3"/></svg>
+        <div class="stat-num" data-count="334450" data-format="comma">334,450</div><div class="stat-label">Points</div>
+      </div>
+      <div class="trail-stat">
+        <svg class="stat-icon" viewBox="0 0 34 34" fill="none" style="margin:0 auto 10px;"><path d="M4 26 12 10 18 20 22 14 30 24" stroke="#9B6BFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="stat-num" data-count="41">41</div><div class="stat-label">Trails</div>
+      </div>
+      <div class="trail-stat">
+        <svg class="stat-icon" viewBox="0 0 34 34" fill="none" style="margin:0 auto 10px;"><rect x="6" y="6" width="22" height="22" rx="5" stroke="#00D4FF" stroke-width="1.6"/><path d="M12 17h10M17 12v10" stroke="#00D4FF" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <div class="stat-num" data-count="50">50</div><div class="stat-label">Superbadges</div>
+      </div>
+      <div class="trail-stat">
+        <svg class="stat-icon" viewBox="0 0 34 34" fill="none" style="margin:0 auto 10px;"><circle cx="17" cy="14" r="9" stroke="#FFB74D" stroke-width="1.6"/><path d="M12 22 9 31 17 27 25 31 22 22" stroke="#FFB74D" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        <div class="stat-num">Champion '25</div><div class="stat-label">Agentblazer Status</div>
+      </div>
     </div>
+
+    <a class="btn btn-outline trail-link" href="https://www.salesforce.com/trailblazer/prashantkumbhar" target="_blank" rel="noopener">View my Trailblazer profile ↗</a>
 
     <div class="cert-grid" id="cert-grid">
       <div class="cert-badge">
@@ -1037,16 +1082,19 @@
       <div class="eyebrow">Education</div>
       <h2 style="font-size:30px; margin:14px 0 30px;">Where the foundation was built.</h2>
       <div class="edu-item">
+        <svg class="edu-icon" viewBox="0 0 34 34" fill="none"><path d="M4 12 17 6 30 12 17 18Z" stroke="#00D4FF" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 15v8c0 2 3 4 7 4s7-2 7-4v-8" stroke="#00D4FF" stroke-width="1.5"/></svg>
         <h3>University of Europe for Applied Sciences</h3>
         <div class="edu-sub">MSc, Corporate Management</div>
         <div class="edu-time">2020 — 2022 · Berlin, Germany</div>
       </div>
       <div class="edu-item">
+        <svg class="edu-icon" viewBox="0 0 34 34" fill="none"><path d="M4 12 17 6 30 12 17 18Z" stroke="#9B6BFF" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 15v8c0 2 3 4 7 4s7-2 7-4v-8" stroke="#9B6BFF" stroke-width="1.5"/></svg>
         <h3>Savitribai Phule Pune University</h3>
         <div class="edu-sub">BE, Computer Engineering</div>
         <div class="edu-time">2012 — 2016</div>
       </div>
       <div class="edu-item" style="border-left-color:transparent;">
+        <svg class="edu-icon" viewBox="0 0 34 34" fill="none"><path d="M4 12 17 6 30 12 17 18Z" stroke="#FFB74D" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 15v8c0 2 3 4 7 4s7-2 7-4v-8" stroke="#FFB74D" stroke-width="1.5"/></svg>
         <h3>Army Public School (APS)</h3>
         <div class="edu-sub">Science and Computers</div>
         <div class="edu-time">2001 — 2012</div>
@@ -1056,10 +1104,10 @@
       <div class="eyebrow">Languages</div>
       <h2 style="font-size:30px; margin:14px 0 30px;">How I communicate it.</h2>
       <div class="lang-list">
-        <div class="lang-row"><span class="lang-name">English</span><span class="lang-level">Full Professional</span></div>
-        <div class="lang-row"><span class="lang-name">Marathi</span><span class="lang-level">Native / Bilingual</span></div>
-        <div class="lang-row"><span class="lang-name">Hindi</span><span class="lang-level">Native / Bilingual</span></div>
-        <div class="lang-row"><span class="lang-name">German</span><span class="lang-level">Elementary</span></div>
+        <div class="lang-row"><span class="lang-name"><span class="lang-dot" style="background:#00D4FF;"></span>English</span><span class="lang-level">Full Professional</span></div>
+        <div class="lang-row"><span class="lang-name"><span class="lang-dot" style="background:#9B6BFF;"></span>Marathi</span><span class="lang-level">Native / Bilingual</span></div>
+        <div class="lang-row"><span class="lang-name"><span class="lang-dot" style="background:#FFB74D;"></span>Hindi</span><span class="lang-level">Native / Bilingual</span></div>
+        <div class="lang-row"><span class="lang-name"><span class="lang-dot" style="background:#FF5DA2;"></span>German</span><span class="lang-level">Elementary</span></div>
       </div>
     </div>
   </div>
@@ -1072,7 +1120,7 @@
       <h2>Got an org that needs architecting?</h2>
       <p>Whether it's a messy migration off Process Builder, a security model that needs rethinking, or a full Salesforce build from zero — I'm happy to talk it through.</p>
       <div class="contact-actions">
-        <a class="btn btn-primary" href="mailto:kumbhar.prashant2@gmail.com">kumbhar.prashant2@gmail.com</a>
+        <a class="btn btn-primary" href="mailto:kumbhar.prashant2@gmail.com">Email me →</a>
         <a class="btn btn-outline" href="https://www.linkedin.com/in/prashantkumbharsf" target="_blank" rel="noopener">Connect on LinkedIn ↗</a>
       </div>
     </div>
