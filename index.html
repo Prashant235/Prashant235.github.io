@@ -275,6 +275,21 @@
 
   .tag-strip{ display:flex; flex-wrap:wrap; gap:10px; margin-top:30px; }
 
+  /* ---------- SELECTED WORK / CASE STUDIES ---------- */
+  .project-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:22px; }
+  .project-card{
+    border:1px solid var(--border); border-radius:18px; padding:30px; background:var(--bg-elev);
+    display:flex; flex-direction:column; gap:16px; transition:border-color .25s, transform .25s;
+  }
+  .project-card:hover{ border-color:var(--cyan); transform:translateY(-4px); }
+  .project-meta{ display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap; }
+  .project-company{ font-family:'JetBrains Mono'; font-size:11.5px; color:var(--gold); text-transform:uppercase; letter-spacing:0.06em; }
+  .project-title{ font-family:'Space Grotesk'; font-size:19px; font-weight:600; }
+  .project-block h4{ font-family:'JetBrains Mono'; font-size:10.5px; text-transform:uppercase; letter-spacing:0.08em; color:var(--cyan); margin-bottom:5px; }
+  .project-block p{ font-size:14px; color:var(--text-muted); }
+  .project-tags{ display:flex; flex-wrap:wrap; gap:8px; margin-top:2px; }
+  .project-tag{ font-family:'JetBrains Mono'; font-size:11px; padding:5px 11px; border-radius:100px; border:1px solid var(--border); color:var(--text-muted); }
+
   .honor-strip{
     margin-top:26px; display:flex; align-items:center; gap:16px;
     border:1px solid var(--border); border-radius:14px; padding:18px 22px;
@@ -341,6 +356,7 @@
       <a href="#about">About</a>
       <a href="#experience">Experience</a>
       <a href="#skills">Skills</a>
+      <a href="#work">Work</a>
       <a href="#certifications">Certifications</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -370,7 +386,7 @@
     <div class="hero-inner">
       <div class="eyebrow">Pune, Maharashtra, India</div>
       <h1>I design the <span class="accent">flows</span> that run the business.</h1>
-      <p class="lead">Prashant Kumbhar — Senior Salesforce Solution Architect at SMS Magic. I turn tangled processes into clean, automated Salesforce architecture: Flows, Apex, and integrations that decision-makers can actually trust.</p>
+      <p class="lead">Prashant Kumbhar — Senior Salesforce Solution Architect at Conversive. I turn tangled processes into clean, automated Salesforce architecture: Flows, Apex, and integrations that decision-makers can actually trust.</p>
       <div class="hero-badges">
         <span class="pill"><span class="dot"></span>14x Salesforce Certified</span>
         <span class="pill"><span class="dot"></span>Four Star Ranger</span>
@@ -387,7 +403,7 @@
       <div class="hero-photo-frame">
         <img src="prashant-photo.png" alt="Prashant Kumbhar">
       </div>
-      <div class="hero-photo-tag"><strong>Four Star Ranger</strong>Trailhead, Salesforce</div>
+      <div class="hero-photo-tag"><strong>14X</strong>Salesforce Certified</div>
     </div>
   </div>
   <div class="scroll-cue"><div class="line"></div>Scroll</div>
@@ -400,7 +416,7 @@
       <h2>Architecture with an admin's instincts.</h2>
       <div class="about-copy" style="margin-top:24px;">
         <p>I've spent a decade inside the Salesforce ecosystem — starting as a Customer Success Engineer supporting clients across the US, and growing into the person clients now bring in to <strong>architect the org from the ground up.</strong> That path matters: I still think like the admin who has to maintain what gets built.</p>
-        <p>At <strong>SMS Magic</strong> (Screen Magic Mobile Media Pvt. Ltd.), I lead projects that automate business processes end-to-end — collaborating with decision-makers to understand what they actually need, then designing it in Flow and Apex rather than duct-taping another workaround onto the org.</p>
+        <p>At <strong>Conversive</strong>, I lead projects that automate business processes end-to-end — collaborating with decision-makers to understand what they actually need, then designing it in Flow and Apex rather than duct-taping another workaround onto the org.</p>
         <p>Alongside the day job, I hold an <strong>MSc in Corporate Management</strong> from the University of Europe for Applied Sciences (Berlin) and a <strong>BE in Computer Engineering</strong> from Savitribai Phule Pune University — a combination that keeps my solutions grounded in both the technical build and the business case behind it.</p>
       </div>
     </div>
@@ -568,6 +584,117 @@
         <h3>Agile Delivery</h3>
         <p>Sprint-based delivery inside fast-moving startups, shipping increments clients can react to quickly.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Selected Work</div>
+      <h2>A few systems I've architected.</h2>
+      <p>Real projects from inside a live, high-volume Salesforce org — the kind of problems that don't show up on a certification exam.</p>
+    </div>
+    <div class="project-grid">
+
+      <div class="project-card">
+        <div class="project-meta">
+          <span class="project-company">Tourlane</span>
+        </div>
+        <div class="project-title">Dual-track case routing: Support vs. dedicated CSMs</div>
+        <div class="project-block">
+          <h4>Problem</h4>
+          <p>Every inbound case landed in one generic support queue — whether it came from a customer mid-trip needing urgent help, or a traveler still in planning who'd benefit from one consistent point of contact.</p>
+        </div>
+        <div class="project-block">
+          <h4>What I built</h4>
+          <p>An automated routing layer in Flow that splits cases in real time: on-road, urgent cases go through Omni-Channel to the next available support agent, while pre/post-trip cases route to the customer's assigned Customer Success Manager. Unattended high-priority cases automatically escalate to a higher-priority queue after a set SLA window, so nothing sits untouched.</p>
+        </div>
+        <div class="project-block">
+          <h4>Impact</h4>
+          <p>Customers got faster response times and a more consistent experience, while the support team stopped losing urgent cases in a shared queue.</p>
+        </div>
+        <div class="project-tags">
+          <span class="project-tag">Flow</span>
+          <span class="project-tag">Apex</span>
+          <span class="project-tag">Omni-Channel</span>
+          <span class="project-tag">Queues</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-meta">
+          <span class="project-company">Tourlane</span>
+        </div>
+        <div class="project-title">Capacity-based CSM assignment engine</div>
+        <div class="project-block">
+          <h4>Problem</h4>
+          <p>Customer Success Managers were assigned to travelers manually — an approach that didn't scale and left senior agents overloaded while newer joiners sat underutilized.</p>
+        </div>
+        <div class="project-block">
+          <h4>What I built</h4>
+          <p>A dynamic, formula-driven assignment engine that scores each CSM's current workload against their seniority-based capacity, then assigns new customers to whoever has the most headroom — with a built-in ramp-up curve so new hires aren't overwhelmed on day one.</p>
+        </div>
+        <div class="project-block">
+          <h4>Impact</h4>
+          <p>Replaced a manual, spreadsheet-driven process with a self-balancing system that adjusts automatically as trip volume and team size change.</p>
+        </div>
+        <div class="project-tags">
+          <span class="project-tag">Flow</span>
+          <span class="project-tag">Formula Fields</span>
+          <span class="project-tag">Service Resources</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-meta">
+          <span class="project-company">Tourlane</span>
+        </div>
+        <div class="project-title">Email archiving pipeline — Salesforce to AWS S3</div>
+        <div class="project-block">
+          <h4>Problem</h4>
+          <p>Salesforce data storage was nearly maxed out, with over a million email records tied to hundreds of thousands of cases consuming the majority of it — and storage costs in Salesforce scale far faster than in raw cloud storage.</p>
+        </div>
+        <div class="project-block">
+          <h4>What I built</h4>
+          <p>A bulkified, self-throttling Apex pipeline (scheduler + queueable jobs) that identifies eligible closed cases, converts their emails to JSON, uploads them to an AWS S3 bucket, then replaces the original records with lightweight text-only copies for quick in-app reference — with built-in retry logic and failure alerting.</p>
+        </div>
+        <div class="project-block">
+          <h4>Impact</h4>
+          <p>Freed up the majority of consumed storage without losing agent access to case history, at a fraction of the cost of scaling Salesforce storage directly.</p>
+        </div>
+        <div class="project-tags">
+          <span class="project-tag">Apex</span>
+          <span class="project-tag">Queueable</span>
+          <span class="project-tag">AWS S3</span>
+          <span class="project-tag">Custom Metadata</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-meta">
+          <span class="project-company">Tourlane</span>
+        </div>
+        <div class="project-title">Twilio voice &amp; video integration</div>
+        <div class="project-block">
+          <h4>Problem</h4>
+          <p>Agents needed to make and receive calls without leaving Salesforce, and incoming calls needed to reach the right person — the assigned CSM if one existed, or an available support agent if not.</p>
+        </div>
+        <div class="project-block">
+          <h4>What I built</h4>
+          <p>A Twilio integration inside Salesforce for initiating voice and video calls directly from a case or contact, paired with Apex logic that recognizes the caller, checks for an existing assigned CSM, and routes the call accordingly — falling back to standard queue routing when no CSM is found.</p>
+        </div>
+        <div class="project-block">
+          <h4>Impact</h4>
+          <p>Gave agents a single workspace for calls and cases, and made sure returning customers consistently reached someone who already knew their trip.</p>
+        </div>
+        <div class="project-tags">
+          <span class="project-tag">Apex</span>
+          <span class="project-tag">Twilio API</span>
+          <span class="project-tag">Service Cloud</span>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
